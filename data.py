@@ -17,8 +17,8 @@ import sys
 import albumentations as A
 import cv2
 
-from utils import conv_bbox, mkdir
-from path import *
+from utils.utils import conv_bbox, mkdir
+from utils.path import *
 
 def GetAnnotations(json_labels:list) -> pd.DataFrame:
 	label_to_num = {'Tank': 0, 'Tank Cluster': 1, 'Floating Head Tank': 2}
