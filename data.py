@@ -72,8 +72,8 @@ def augmentation(image_features, annotations):
 
 
 def processing(data, mode):
-	OUTPUT_IMAGE_FILE = Path(YOLO_PATH / 'yolodata' / 'images' / mode)
-	OUTPUT_LABEL_FILE = Path(YOLO_PATH / 'yolodata' / 'labels' / mode)
+	OUTPUT_IMAGE_FILE = Path(WORKING_PATH / 'yolodata' / 'images' / mode)
+	OUTPUT_LABEL_FILE = Path(WORKING_PATH / 'yolodata' / 'labels' / mode)
 
 	for _, row in tqdm.tqdm(data.iterrows(), desc=f'Creating {mode} yolo data...'):
 		image_name = row['image_name']
@@ -110,15 +110,13 @@ def CreateYoloDataset():
 
 	train, val = train_test_split(annotations, test_size=0.1, random_state = 42)
 
-	mkdir(YOLO_PATH / 'yolodata')
-	mkdir(YOLO_PATH / 'yolodata'/ 'images')
-	mkdir(YOLO_PATH / 'yolodata'/ 'labels')
-	mkdir(YOLO_PATH / 'yolodata'/ 'images' / 'train')
-	mkdir(YOLO_PATH / 'yolodata'/ 'images'/ 'validation')
-	mkdir(YOLO_PATH / 'yolodata'/ 'labels' / 'train')
-	mkdir(YOLO_PATH / 'yolodata'/ 'labels'/ 'validation')
+	mkdir(WORKING_PATH / 'yolodata')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images' / 'train')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images'/ 'validation')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels' / 'train')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels'/ 'validation')
 
 	processing(train, 'train')
 	processing(val, 'validation')
-
-CreateYoloDataset()
