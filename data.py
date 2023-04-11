@@ -14,8 +14,11 @@ from sklearn.model_selection import train_test_split
 from matplotlib import pyplot as plt
 import sys
 
+print(os.getcwd(), sys.path)
 if os.getcwd() not in sys.path:
+	print("CHECK____")
 	sys.path.append(os.getcwd())
+	print(sys.path)
 
 import albumentations as A
 import cv2
