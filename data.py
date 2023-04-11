@@ -17,7 +17,7 @@ import sys
 import albumentations as A
 import cv2
 
-import utils
+from utils import conv_bbox, mkdir
 from path import *
 
 def GetAnnotations(json_labels:list) -> pd.DataFrame:
@@ -33,7 +33,7 @@ def GetAnnotations(json_labels:list) -> pd.DataFrame:
 				class_name = label
 				class_id = label_to_num[class_name]
 				for bbox_coord in obj['label'][class_name]:
-					y_min, x_min, y_max, x_max = utils.conv_bbox(bbox_coord['geometry'])
+					y_min, x_min, y_max, x_max = conv_bbox(bbox_coord['geometry'])
 					width = x_max - x_min
 					height = y_max - y_min
 					df.append([file_name.split('.')[0], class_name, class_id, [x_min, y_min, width, height]])
@@ -95,8 +95,8 @@ def processing(data, mode):
 def CreateYoloDataset():
 	json_labels = json.load(open(DATASET_PATH / 'labels.json'))
 
-	utils.mkdir(test_path)
-	utils.mkdir(train_path)
+	mkdir(test_path)
+	mkdir(train_path)
 
 	annotations = GetAnnotations(json_labels)
 
@@ -105,13 +105,13 @@ def CreateYoloDataset():
 
 	train, val = train_test_split(annotations, test_size=0.1, random_state = 42)
 
-	utils.mkdir(WORKING_PATH / 'yolodata')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'images')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'labels')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'images' / 'train')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'images'/ 'validation')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'labels' / 'train')
-	utils.mkdir(WORKING_PATH / 'yolodata'/ 'labels'/ 'validation')
+	mkdir(WORKING_PATH / 'yolodata')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images' / 'train')
+	mkdir(WORKING_PATH / 'yolodata'/ 'images'/ 'validation')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels' / 'train')
+	mkdir(WORKING_PATH / 'yolodata'/ 'labels'/ 'validation')
 
 	processing(train, 'train')
 	processing(val, 'validation')
