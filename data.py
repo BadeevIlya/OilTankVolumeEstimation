@@ -72,8 +72,8 @@ def augmentation(image_features, annotations):
 
 
 def processing(data, mode):
-	OUTPUT_IMAGE_FILE = Path(WORKING_PATH / 'yolodata' / 'images' / mode)
-	OUTPUT_LABEL_FILE = Path(WORKING_PATH / 'yolodata' / 'labels' / mode)
+	OUTPUT_IMAGE_FILE = Path(WORKING_PATH / 'dataset' /'yolodata' / 'images' / mode)
+	OUTPUT_LABEL_FILE = Path(WORKING_PATH / 'dataset' /'yolodata' / 'labels' / mode)
 
 	for _, row in tqdm.tqdm(data.iterrows(), desc=f'Creating {mode} yolo data...'):
 		image_name = row['image_name']
