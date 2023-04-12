@@ -110,13 +110,14 @@ def CreateYoloDataset():
 
 	train, val = train_test_split(annotations, test_size=0.1, random_state = 42)
 
-	mkdir(WORKING_PATH / 'yolodata')
-	mkdir(WORKING_PATH / 'yolodata'/ 'images')
-	mkdir(WORKING_PATH / 'yolodata'/ 'labels')
-	mkdir(WORKING_PATH / 'yolodata'/ 'images' / 'train')
-	mkdir(WORKING_PATH / 'yolodata'/ 'images'/ 'validation')
-	mkdir(WORKING_PATH / 'yolodata'/ 'labels' / 'train')
-	mkdir(WORKING_PATH / 'yolodata'/ 'labels'/ 'validation')
+	mkdir(WORKING_PATH / 'datasets')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'images')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'labels')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'images' / 'train')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'images'/ 'validation')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'labels' / 'train')
+	mkdir(WORKING_PATH / 'datasets' / 'Yolo_GoogleOilStorage_x2'/ 'labels'/ 'validation')
 
 	processing(train, 'train')
 	processing(val, 'validation')
