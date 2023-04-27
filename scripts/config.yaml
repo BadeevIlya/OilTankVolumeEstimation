@@ -1,0 +1,14 @@
+build:
+  raw_data_file: "oiltank"
+  path_to: "tank_yolo"
+  random_state: 42
+  test_size: 0.1
+  augment: True
+train:
+  model_weights: 'yolov8s.pt'
+  data: '../data/tank.yaml'
+  imgsz: 1024
+  batch: 16
+  epochs: 50
+  name: 'yolov8s_50e_high_resolution'
+  project: 'OilTankDetecting'
