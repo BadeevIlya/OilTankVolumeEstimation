@@ -1,6 +1,6 @@
 path: ../../data/datasets/tank_yolo/
-train: images\train
-val: images\validation
+train: images/train
+val: images/validation
 
 # class names
 names:

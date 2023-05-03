@@ -12,3 +12,6 @@ train:
   epochs: 50
   name: 'yolov8s_50e_high_resolution'
   project: 'OilTankDetecting'
+predict:
+  model_weights: '../models/yolov8s_tank.pt'
+  img_src: '../data/test'
